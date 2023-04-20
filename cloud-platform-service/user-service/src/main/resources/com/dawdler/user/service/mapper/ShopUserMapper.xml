@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dawdler.user.service.mapper.ShopUserMapper">
+  <resultMap id="BaseResultMap" type="com.dawdler.user.entity.ShopUser">
+    <id column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="ug_id" jdbcType="BIGINT" property="ugId" />
+    <result column="nick_name" jdbcType="VARCHAR" property="nickName" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    user_id, ug_id, nick_name, mobile, password
+  </sql>
+  <select id="queryByPage" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from shop_user
+    where 1 = 1
+    <if test="queryDTO.userName != null and queryDTO.userName != '' ">
+      AND nick_name = #{queryDTO.userName,jdbcType=VARCHAR}
+    </if>
+  </select>
+</mapper>

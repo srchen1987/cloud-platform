@@ -1,0 +1,19 @@
+server:
+  port: 8206
+spring:
+  application:
+    name: user-service
+mybatis:
+  config-locations: classpath:mybatis-configuration.xml
+  mapper-locations: classpath:/com/dawdler/user/service/mapper/*.xml
+  configuration:
+    cache-enabled: true
+    lazy-loading-enabled: false
+    use-generated-keys: true
+    auto-mapping-behavior: full
+    default-executor-type: REUSE
+    default-statement-timeout: 20000
+###显示SQL语句部分
+debug: false
+logging.level.com.dawdler.user.service.mapper: debug
+## logging.level.com.dawdler.user.service: info

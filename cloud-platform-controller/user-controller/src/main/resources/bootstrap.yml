@@ -1,0 +1,5 @@
+server:
+  port: 8218
+spring:
+  application:
+    name: user-controller
